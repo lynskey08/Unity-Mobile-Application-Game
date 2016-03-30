@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{F5CE2CE5-6556-7BB0-B7E2-5D3733B996ED}") = "MobileApp - Attempt to change enemy ship character", "Assembly-CSharp.csproj", "{D2C9D181-6A98-21A9-8795-61E870E2D180}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D2C9D181-6A98-21A9-8795-61E870E2D180}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2C9D181-6A98-21A9-8795-61E870E2D180}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2C9D181-6A98-21A9-8795-61E870E2D180}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2C9D181-6A98-21A9-8795-61E870E2D180}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
