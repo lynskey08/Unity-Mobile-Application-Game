@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
 		{
 			nextTimeFired = Time.time + rateOfFire;
 			Instantiate(laserShot, laserShotSpawn.position, laserShotSpawn.rotation);
+			GetComponent<AudioSource>().Play ();//this plays the audio file attached to this script
 		}
 	}
 	
