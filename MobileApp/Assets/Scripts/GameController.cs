@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
-	public GameObject asteroid;
+	public GameObject[] asteroids;
 	public int asteroidCount;
 	public Vector3 spawnValue;
 	public float spawnDelay;
@@ -50,6 +50,7 @@ public class GameController : MonoBehaviour {
 		while(true){
 			//this will spawn multiple asteroids randomly
 			for (int i = 0;i < asteroidCount;i++) {
+				GameObject asteroid = asteroids[Random.Range(0,asteroids.Length)];
 				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValue.x, spawnValue.x), spawnValue.y, spawnValue.z);
 				Quaternion spawnRotation = Quaternion.identity;
 				Instantiate (asteroid, spawnPosition, spawnRotation);
