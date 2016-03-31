@@ -19,8 +19,9 @@ public class DestroyByContact : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		//find out which if statement works better: do research
+		//find out which if statement works better: look them up
 		//if (other.tag == ("Boundary") || other.tag == ("Enemy"))
+		//CompareTag seem to be less buggy
 
 		if (other.CompareTag ("Boundary") || other.CompareTag ("Enemy"))
 		{
@@ -28,18 +29,24 @@ public class DestroyByContact : MonoBehaviour {
 
 		}
 
-		if (explosion != null){
+		if (explosion != null)
+		{
 			Instantiate (explosion, transform.position, transform.rotation);
 		}
 
-		if (other.tag == "Player") {
+		//if (other.tag == "Player") 
+
+		if (other.CompareTag ("Player"))
+		{
 			Instantiate (playerExplosion, other.transform.position, other.transform.rotation);
 			gameController.GameOver();
 		} 
-		else {
-			gameController.AddScore (scoreValue);
-		}
 
+		/*else {
+			
+		}*/
+
+		gameController.AddScore (scoreValue);
 		Destroy(other.gameObject);//destroys the laser
 		Destroy(gameObject);//destroys the game object the script is attached to(asteroid)
 	}
