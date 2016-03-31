@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
@@ -16,6 +17,11 @@ public class GameController : MonoBehaviour {
 	public GUIText gameOverText;
 	private bool gameOver;
 	private bool restart;
+	public string playerName = "";
+	public InputField Field;
+	public Button Enter;
+	private string secretKey = "Gareth";
+	public string addScoreURL = "http://lynskey.cloudapp.net/addscore.php?";
 
 	void Start(){
 		
@@ -28,6 +34,9 @@ public class GameController : MonoBehaviour {
 		score = 0;
 		UpdateScore ();
 		StartCoroutine (Spawn ());
+
+		Field.gameObject.SetActive (false);
+		Enter.gameObject.SetActive (false);
 	}
 
 	void Update ()
@@ -35,7 +44,7 @@ public class GameController : MonoBehaviour {
 		if (restart)
 		{
 			//if restart is true and the 'R' key is pressed, the scene is reloaded 
-			if (Input.GetKeyDown (KeyCode.R))
+			if (Input.GetKeyDown (KeyCode.KeypadEnter))
 			{
 				//Application.LoadLevel (Application.loadedLevel);
 				SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -60,7 +69,7 @@ public class GameController : MonoBehaviour {
 
 			//this breaks the infinite while
 			if (gameOver) {
-				restartText.text = "Press 'R' to restart";
+				restartText.text = "Press 'Enter' to restart";
 				restart = true;
 				break;
 			}
@@ -80,5 +89,54 @@ public class GameController : MonoBehaviour {
 	public void GameOver(){
 		gameOverText.text = "Game Over!";
 		gameOver = true;
+		Field.gameObject.SetActive (true);
+		Enter.gameObject.SetActive (true);
+	}
+
+	public void submitScore(){
+		StartCoroutine (PostScores(playerName, score));
+		Field.gameObject.SetActive (false);
+		Enter.gameObject.SetActive (false);
+	}
+
+	public void enterBtn(){
+		playerName = Field.text;
+		submitScore ();
+	}
+
+	public string Md5Sum(string strToEncrypt){
+
+		System.Text.UTF8Encoding ue = new System.Text.UTF8Encoding ();
+		byte[] bytes = ue.GetBytes (strToEncrypt);
+
+		//encrypt bytes
+		System.Security.Cryptography.MD5CryptoServiceProvider md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+		byte[] hashBytes = md5.ComputeHash (bytes);
+
+		//Convert the encrypted bytes back to a string(base 16)
+		string hashString = "";
+
+		for (int i = 0; i < hashBytes.Length; i++) {
+			hashString += System.Convert.ToString (hashBytes [i], 16).PadLeft (2, '0');
+		}
+		return hashString.PadLeft (32, '0');
+	}
+
+	IEnumerator PostScores(string playerName, int score){
+
+		//This connect to a server side php script that will add the name and score to a MySQL database.
+		//Supply it with a string representing the players name and the players score.
+		string hash = Md5Sum(playerName + score + secretKey);
+
+		string post_url = addScoreURL + "playerName=" + WWW.EscapeURL (playerName) + "&score=" + score + "&hash=" + hash;
+
+		//post the URl to the site and create a download object to get the results
+		WWW hs_post = new WWW(post_url);
+		yield return hs_post;//wait until the download is done
+
+		if(hs_post.error != null){
+
+			print ("There was an error posting the highscore: " +hs_post.error);
+		}
 	}
 }
