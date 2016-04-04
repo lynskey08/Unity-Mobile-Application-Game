@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour {
 	public Canvas MainCanvas;
 	public Canvas SettingsCanvas;
 	public Canvas HighscoresCanvas;
+	private AudioSource audioSource;
 
 	void Awake(){
 		SettingsCanvas.enabled = false;
@@ -18,6 +19,7 @@ public class MainMenu : MonoBehaviour {
 		MainCanvas.enabled = false;
 		SettingsCanvas.enabled = true;
 		HighscoresCanvas.enabled = false;
+		audioSource.Play ();
 	}
 
 	public void HighscoresOn(){
@@ -25,6 +27,7 @@ public class MainMenu : MonoBehaviour {
 		MainCanvas.enabled = false;
 		SettingsCanvas.enabled = false;
 		HighscoresCanvas.enabled = true;
+		audioSource.Play ();
 	}
 
 	public void ReturnOn(){
@@ -32,6 +35,7 @@ public class MainMenu : MonoBehaviour {
 		MainCanvas.enabled = true;
 		SettingsCanvas.enabled = false;
 		HighscoresCanvas.enabled = false;
+		audioSource.Play ();
 	}
 
 	public void LoadOn(){

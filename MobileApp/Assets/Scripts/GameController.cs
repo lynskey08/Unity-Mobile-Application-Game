@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour {
 	public string playerName = "";
 	public InputField Field;
 	public Button Enter;
+	public Button Return;
 	private string secretKey = "Gareth";
 	public string addScoreURL = "http://lynskey.cloudapp.net/addscore.php?";
 
@@ -37,12 +38,14 @@ public class GameController : MonoBehaviour {
 
 		Field.gameObject.SetActive (false);
 		Enter.gameObject.SetActive (false);
+		Return.gameObject.SetActive (false);
 	}
 
 	void Update ()
 	{
 		if (restart)
 		{
+			
 			//if restart is true and the 'R' key is pressed, the scene is reloaded 
 			if (Input.GetKeyDown (KeyCode.KeypadEnter))
 			{
@@ -91,17 +94,23 @@ public class GameController : MonoBehaviour {
 		gameOver = true;
 		Field.gameObject.SetActive (true);
 		Enter.gameObject.SetActive (true);
+		Return.gameObject.SetActive (true);
 	}
 
 	public void submitScore(){
 		StartCoroutine (PostScores(playerName, score));
 		Field.gameObject.SetActive (false);
 		Enter.gameObject.SetActive (false);
+		Return.gameObject.SetActive (true);
 	}
 
 	public void enterBtn(){
 		playerName = Field.text;
 		submitScore ();
+	}
+
+	public void ReturnBtn(){
+		Application.LoadLevel ("MainMenu");
 	}
 
 	public string Md5Sum(string strToEncrypt){
