@@ -36,6 +36,6 @@ public class MainMenu : MonoBehaviour {
 
 	public void LoadOn(){
 		//you need to make a return button on the settings and highscores pages
-		Application.LoadLevel (1);
+		Application.LoadLevel ("Main");
 	}
 }
