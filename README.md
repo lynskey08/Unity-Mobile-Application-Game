@@ -22,5 +22,5 @@ The 13th commit in my original repository 'MobileApp' was corrupt and I wasn't a
 #####Bugs:
 ######Very seldom some asteroids disappear randomly without a collision happenning.
 ######The background audio keeps playing even when it's not in playmode(in unity).
-######Sometimes the DestroyByBoundary doesn't destroy the the enemy laser leaving the game view resulting in the extra laser audio.
+######Sometimes the DestroyByBoundary script doesn't destroy the enemy laser leaving the game view, resulting in the extra laser audio being heard.
 ######The mute button sets the volume to 0 but it doesn't save the image state of the mute button, meaning the button can be checked(and the audio is muted) and unchecked(and the audio is still muted).
