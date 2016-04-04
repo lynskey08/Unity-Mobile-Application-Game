@@ -8,7 +8,7 @@ public class Mover : MonoBehaviour {
 	void Start()
 	{
 		//rb = GetComponent<Rigidbody> ();
-
+		//this is for moving the laser
 		GetComponent<Rigidbody>().velocity = transform.forward * speed;
 
 	}

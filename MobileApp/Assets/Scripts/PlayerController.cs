@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
 	
 	void FixedUpdate () 
 	{
+		//moves the player 
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		float moveVertical = Input.GetAxis ("Vertical");
 		
@@ -44,10 +45,12 @@ public class PlayerController : MonoBehaviour
 		rb.velocity = movement * speed;
 		rb.position = new Vector3 
 		(
-				Mathf.Clamp (rb.position.x, boundary.xMinimum, boundary.xMaximum), 
+			//boundary to keep the ship inside the game view
+			//clamps a value between a minimum and maximum float value
+			Mathf.Clamp (rb.position.x, boundary.xMinimum, boundary.xMaximum), 
 		    0.0f, 
 			Mathf.Clamp (rb.position.z, boundary.zMinimum, boundary.zMaximum)
         );
-		rb.rotation = Quaternion.Euler (0.0f, 0.0f, rb.velocity.x * -tiltShip);
+		rb.rotation = Quaternion.Euler (0.0f, 0.0f, rb.velocity.x * -tiltShip);//tilts the player ship
 	} 
 }﻿

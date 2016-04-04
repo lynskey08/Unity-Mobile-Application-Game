@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour {
 			}
 			yield return new WaitForSeconds(wait);
 
-			//this breaks the infinite while
+			//this breaks the infinite while loop if the player is destroyed
 			if (gameOver) {
 				restartText.text = "Press 'Enter' to restart";
 				restart = true;
@@ -79,25 +79,30 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+	//add scores when the asteroids/enemies are destroyed
 	public void AddScore(int newScoreValue){
 		score += newScoreValue;
 		UpdateScore ();
 	}
 
+
 	void UpdateScore(){
-		//scoreText.text = "Score: " + score;
+		//displays the score in top left-hand side of the screen
+		//made it like the old arcade style game scores with six  
+		//zero's and it just adds onto that
 		scoreText.text = "Score: " + score.ToString().PadLeft(6,'0');
 	}
 
 	public void GameOver(){
-		gameOverText.text = "Game Over!";
-		gameOver = true;
+		gameOverText.text = "Game Over!";//Game over text appears
+		gameOver = true;//gameOver is called
 		Field.gameObject.SetActive (true);
 		Enter.gameObject.SetActive (true);
 		Return.gameObject.SetActive (true);
 	}
 
 	public void submitScore(){
+		//starts coroutine of the PostScores method which takes in the playerName and score values
 		StartCoroutine (PostScores(playerName, score));
 		Field.gameObject.SetActive (false);
 		Enter.gameObject.SetActive (false);
@@ -105,12 +110,13 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void enterBtn(){
+		//submits playerName and score
 		playerName = Field.text;
 		submitScore ();
 	}
 
 	public void ReturnBtn(){
-		Application.LoadLevel ("MainMenu");
+		Application.LoadLevel ("MainMenu");//returns to mainmenu
 	}
 
 	public string Md5Sum(string strToEncrypt){
