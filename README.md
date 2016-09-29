@@ -5,12 +5,6 @@ The 13th commit in my original repository 'MobileApp' was corrupt and I wasn't a
 
 ##Space Voyager Windows 10 Game
 
-###Project References:
-####https://www.assetstore.unity3d.com/en/#!/content/39964
-####https://unity3d.com/learn/tutorials/projects/space-shooter/introduction?playlist=17147
-####http://wiki.unity3d.com/index.php?title=Server_Side_Highscores
-####https://www.youtube.com/watch?v=9hPYXi5aXzw
-
 #####Game:
 ######This is a simple space shooter game. On open, the game consists of a main menu with a Play game button, Settings button and a Highscores button each linking to its corresponding page.
 ######You are a spaceship and the aim of the game is to stay alive as long as possible and destroy the asteroids and enemy hazards spawning above(10 points for asteroids and 30 points for enemies), and the score is kept in the top left-hand corner of the screen.
@@ -24,3 +18,9 @@ The 13th commit in my original repository 'MobileApp' was corrupt and I wasn't a
 ######The background audio keeps playing even when it's not in playmode(in unity).
 ######Sometimes the DestroyByBoundary script doesn't destroy the enemy laser leaving the game view, resulting in the extra laser audio being heard.
 ######The mute button sets the volume to 0 but it doesn't save the image state of the mute button, meaning the button can be checked(and the audio is muted) and unchecked(and the audio is still muted).
+
+###Project References:
+####https://www.assetstore.unity3d.com/en/#!/content/39964
+####https://unity3d.com/learn/tutorials/projects/space-shooter/introduction?playlist=17147
+####http://wiki.unity3d.com/index.php?title=Server_Side_Highscores
+####https://www.youtube.com/watch?v=9hPYXi5aXzw
