@@ -3,7 +3,7 @@ The 13th commit in my original repository 'MobileApp' was corrupt and I wasn't a
 
 ##Gareth Lynskey - G00312651
 
-##Space Voyager Windows 10 Game
+##Space Shooter Windows 10 Game
 
 #####Game:
 ######This is a simple space shooter game. On open, the game consists of a main menu with a Play game button, Settings button and a Highscores button each linking to its corresponding page.
