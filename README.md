@@ -13,6 +13,10 @@ The 13th commit in my original repository 'MobileApp' was corrupt and I wasn't a
 ######User is also given the option to restart the game or return to the main menu.
 ######On the Settings Page there is a volume slider to increase or decrease volume and there is also a mute button.
 
+#####How to Play:
+######The space ship is controlled using the w,a,s, and d keys. 
+######The left mouse key is used to shoot the laser.
+
 #####Bugs:
 ######Very seldom some asteroids disappear randomly without a collision happenning.
 ######The background audio keeps playing even when it's not in playmode(in unity).
