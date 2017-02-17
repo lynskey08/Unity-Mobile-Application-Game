@@ -14,8 +14,8 @@ The 13th commit in my original repository 'MobileApp' was corrupt and I wasn't a
 ######On the Settings Page there is a volume slider to increase or decrease volume and there is also a mute button.
 
 #####How to Play:
-######The space ship is controlled using the w,a,s, and d keys. 
-######The left mouse key is used to shoot the laser.
+######In order to navigate the spaceship, the w,a,s, and d keys are used. 
+######The left mouse botton is used to shoot the spaceship's laser.
 
 #####Bugs:
 ######Very seldom some asteroids disappear randomly without a collision happenning.
