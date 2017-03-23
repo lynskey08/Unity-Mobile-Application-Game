@@ -6,6 +6,8 @@ using Pose = Thalmic.Myo.Pose;
 using UnlockType = Thalmic.Myo.UnlockType;
 using VibrationType = Thalmic.Myo.VibrationType;
 
+/*Adapted from: www.github.com/thalmiclabs/myo-unity/blob/master/project/Assets/Myo%20Samples/Scripts/JointOrientation.cs*/
+
 // Orient the object to match that of the Myo armband.
 // Compensate for initial yaw (orientation about the gravity vector) and roll (orientation about
 // the wearer's arm) by allowing the user to set a reference orientation.
