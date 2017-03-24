@@ -14,6 +14,9 @@ using VibrationType = Thalmic.Myo.VibrationType;
 // Making the fingers spread pose or pressing the 'r' key resets the reference orientation.
 public class MyoJointOrientation : MonoBehaviour
 {
+
+    private Vector3 referenceVector;
+
 	// Myo game object to connect with.
 	// This object must have a ThalmicMyo script attached.
 	public GameObject myo = null;
@@ -43,11 +46,28 @@ public class MyoJointOrientation : MonoBehaviour
 		if (thalmicMyo.pose != _lastPose) {
 			_lastPose = thalmicMyo.pose;
 
-			if (thalmicMyo.pose == Pose.FingersSpread) {
+			if (thalmicMyo.pose == Pose.FingersSpread){
 				updateReference = true;
-
 				ExtendUnlockAndNotifyUserAction(thalmicMyo);
 			}
+            else if (thalmicMyo.pose == Pose.Fist){
+                updateReference = true;
+                ExtendUnlockAndNotifyUserAction(thalmicMyo);
+            }
+            else if (thalmicMyo.pose == Pose.DoubleTap){
+                updateReference = true;
+                ExtendUnlockAndNotifyUserAction(thalmicMyo);
+            }
+            else if (thalmicMyo.pose == Pose.WaveIn)
+            {
+                updateReference = true;
+                ExtendUnlockAndNotifyUserAction(thalmicMyo);
+            }
+            else if (thalmicMyo.pose == Pose.WaveOut)
+            {
+                updateReference = true;
+                ExtendUnlockAndNotifyUserAction(thalmicMyo);
+            }
 		}
 		if (Input.GetKeyDown ("r")) {
 			updateReference = true;

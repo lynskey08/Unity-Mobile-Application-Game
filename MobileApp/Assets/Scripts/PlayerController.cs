@@ -9,18 +9,24 @@ public class Boundary
 
 public class PlayerController : MonoBehaviour 
 {
-	public Rigidbody rb;
-	public float speed;
-	public float tiltShip;
-	public Boundary boundary;
+	public Rigidbody rb;//Rigidbody of the ship
+	public float speed;//the speed of the ship
+	public float tiltShip;//how much the player ship tilts
+	public Boundary boundary;//boundary for the player
 
-	public GameObject laserShot;
-	public Transform laserShotSpawn;
-	public float rateOfFire;
+	public GameObject laserShot;//ship laser game object
+	public Transform laserShotSpawn;//ship laser spawn location
+	public float rateOfFire;//rate at which each laser firse
 
 	private float nextTimeFired;
-	
-	void Start() 
+
+    private Quaternion _antiYaw = Quaternion.identity;
+    private float _referenceRoll = 0.0f;
+
+    public ThalmicMyo thalmicMyo;
+
+
+    void Start() 
 	{
 		rb = GetComponent<Rigidbody> ();
 	}
