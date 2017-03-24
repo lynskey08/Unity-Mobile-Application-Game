@@ -1,6 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+using LockingPolicy = Thalmic.Myo.LockingPolicy;
+using Pose = Thalmic.Myo.Pose;
+using UnlockType = Thalmic.Myo.UnlockType;
+using VibrationType = Thalmic.Myo.VibrationType;
+
 [System.Serializable]
 public class Boundary
 {
@@ -22,24 +27,45 @@ public class PlayerController : MonoBehaviour
 
     private Quaternion _antiYaw = Quaternion.identity;
     private float _referenceRoll = 0.0f;
-
+    
     public ThalmicMyo thalmicMyo;
+    public GameObject myo = null;
+    private Pose _lastPose = Pose.Unknown;
+    private int i;
 
 
     void Start() 
 	{
 		rb = GetComponent<Rigidbody> ();
-	}
+
+        //Set
+        thalmicMyo = myo.GetComponent<ThalmicMyo>();
+    }
 
 	void Update()
 	{
-		if (Input.GetButton("Fire1") && Time.time > nextTimeFired)
-		{
-			nextTimeFired = Time.time + rateOfFire;
-			Instantiate(laserShot, laserShotSpawn.position, laserShotSpawn.rotation);
-			GetComponent<AudioSource>().Play ();//this plays the audio file attached to this script
-		}
-	}
+        bool updateReference = false;
+        
+
+        if (updateReference)
+        {
+
+
+            Vector3 movement = new Vector3(myo.transform.forward.x * 10, 0.0f, 0.0f); //myo.transform.forward.z * 5
+            rb.velocity = movement * speed;
+
+            rb.position = new Vector3
+            (Mathf.Clamp(rb.position.x, boundary.xMinimum, boundary.xMaximum),
+             0,
+             Mathf.Clamp(rb.position.z, boundary.zMinimum, boundary.zMaximum)
+            );
+            rb.rotation = Quaternion.Euler(0.0f, 0.0f, rb.velocity.x * -tiltShip);
+
+        }
+        //rb.position = new Vector3((myo.transform.eulerAngles.x*10), 0.0f , 0.0f);// myo.transform.forward.z
+
+        rb.position = new Vector3((myo.transform.forward.x * 10), 0.0f, 0.0f);// myo.transform.forward.z
+    }
 	
 	void FixedUpdate () 
 	{
@@ -58,5 +84,17 @@ public class PlayerController : MonoBehaviour
 			Mathf.Clamp (rb.position.z, boundary.zMinimum, boundary.zMaximum)
         );
 		rb.rotation = Quaternion.Euler (0.0f, 0.0f, rb.velocity.x * -tiltShip);//tilts the player ship
-	} 
+	}
+
+    void ExtendUnlockAndNotifyUserAction(ThalmicMyo myo)
+    {
+        ThalmicHub hub = ThalmicHub.instance;
+
+        if (hub.lockingPolicy == LockingPolicy.Standard)
+        {
+            myo.Unlock(UnlockType.Timed);
+        }
+
+        myo.NotifyUserAction();
+    }
 }﻿

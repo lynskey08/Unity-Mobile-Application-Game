@@ -15,7 +15,7 @@ using VibrationType = Thalmic.Myo.VibrationType;
 public class MyoJointOrientation : MonoBehaviour
 {
 
-    private Vector3 referenceVector;
+    private Vector3 vector;
 
 	// Myo game object to connect with.
 	// This object must have a ThalmicMyo script attached.
@@ -50,21 +50,9 @@ public class MyoJointOrientation : MonoBehaviour
 				updateReference = true;
 				ExtendUnlockAndNotifyUserAction(thalmicMyo);
 			}
-            else if (thalmicMyo.pose == Pose.Fist){
-                updateReference = true;
-                ExtendUnlockAndNotifyUserAction(thalmicMyo);
-            }
-            else if (thalmicMyo.pose == Pose.DoubleTap){
-                updateReference = true;
-                ExtendUnlockAndNotifyUserAction(thalmicMyo);
-            }
-            else if (thalmicMyo.pose == Pose.WaveIn)
+            else if (thalmicMyo.pose == Pose.Fist)
             {
-                updateReference = true;
-                ExtendUnlockAndNotifyUserAction(thalmicMyo);
-            }
-            else if (thalmicMyo.pose == Pose.WaveOut)
-            {
+                thalmicMyo.Vibrate(VibrationType.Medium);
                 updateReference = true;
                 ExtendUnlockAndNotifyUserAction(thalmicMyo);
             }
@@ -76,24 +64,25 @@ public class MyoJointOrientation : MonoBehaviour
 		// Update references. This anchors the joint on-screen such that it faces forward away
 		// from the viewer when the Myo armband is oriented the way it is when these references are taken.
 		if (updateReference) {
-			// _antiYaw represents a rotation of the Myo armband about the Y axis (up) which aligns the forward
-			// vector of the rotation with Z = 1 when the wearer's arm is pointing in the reference direction.
-			_antiYaw = Quaternion.FromToRotation (
-				new Vector3 (myo.transform.forward.x, 0, myo.transform.forward.z),
-				new Vector3 (0, 0, 1)
-			);
 
 			// _referenceRoll represents how many degrees the Myo armband is rotated clockwise
 			// about its forward axis (when looking down the wearer's arm towards their hand) from the reference zero
 			// roll direction. This direction is calculated and explained below. When this reference is
 			// taken, the joint will be rotated about its forward axis such that it faces upwards when
 			// the roll value matches the reference.
-			Vector3 referenceZeroRoll = computeZeroRollVector (myo.transform.forward);
-			_referenceRoll = rollFromZero (referenceZeroRoll, myo.transform.forward, myo.transform.up);
-		}
+			
+            //-------------
+            vector = new Vector3(myo.transform.forward.x, myo.transform.forward.y, myo.transform.forward.z);
+            //Vector3 referenceZeroRoll = computeZeroRollVector (myo.transform.forward);
+            //_referenceRoll = rollFromZero (referenceZeroRoll, myo.transform.forward, myo.transform.up);
+        }
 
-		// Current zero roll vector and roll value.
-		Vector3 zeroRoll = computeZeroRollVector (myo.transform.forward);
+        //-------
+        transform.position = new Vector3((myo.transform.forward.x * 20) - vector.x, 0, 0);
+        //-------
+
+        // Current zero roll vector and roll value.
+        Vector3 zeroRoll = computeZeroRollVector (myo.transform.forward);
 		float roll = rollFromZero (zeroRoll, myo.transform.forward, myo.transform.up);
 
 		// The relative roll is simply how much the current roll has changed relative to the reference roll.
