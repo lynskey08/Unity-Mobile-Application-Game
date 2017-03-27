@@ -20,7 +20,8 @@ public class PlayerController : MonoBehaviour
 	public Boundary boundary;//boundary for the player
 
 	public GameObject laserShot;//ship laser game object
-	public Transform laserShotSpawn;//ship laser spawn location
+    public GameObject laserShot1;//ship laser game object
+    public Transform laserShotSpawn;//ship laser spawn location
 	public float rateOfFire;//rate at which each laser firse
 
 	private float nextTimeFired;
@@ -32,29 +33,75 @@ public class PlayerController : MonoBehaviour
     public GameObject myo = null;
     private Pose _lastPose = Pose.Unknown;
     private bool shooting = false;
-    private int i;
     private bool shotsFired = false;
-
-    void Shooting(bool shotsFired)
-    {
-        if((shotsFired) && Time.time > nextTimeFired)
-        {
-            nextTimeFired = Time.time + rateOfFire;
-            Instantiate(laserShot);
-        }
-    }
+    //public GameObject gunfire;
+    private int i;
 
     void Start() 
 	{
 		rb = GetComponent<Rigidbody> ();
-
-        //Set
         thalmicMyo = myo.GetComponent<ThalmicMyo>();
+        i = 0;
     }
 
-	void Update()
+    void Shooting(bool shotsFired)
+    {
+        //for (var i = 0; i < laserShot.Length; i += 1)
+        //{
+            if ((shotsFired) && Time.time > nextTimeFired)
+            {
+                nextTimeFired = Time.time + rateOfFire;
+                if (i.Equals(0))
+                {
+                    Instantiate(laserShot, laserShotSpawn.position, laserShotSpawn.rotation);
+                }
+                else if(i.Equals(1))
+                {
+                    Instantiate(laserShot1, laserShotSpawn.position, laserShotSpawn.rotation);
+                }
+
+            }
+            /*if (Input.GetButton("Fire1") && Time.time > nextTimeFired)
+            {
+                nextTimeFired = Time.time + rateOfFire;
+                //creates a clone of laserShot and spawns it at a certain position and rotation
+                Instantiate(laserShot[i], laserShotSpawn.position, laserShotSpawn.rotation);
+            }*/
+        //}
+
+    }
+
+    void Update()
 	{
         bool updateReference = false;
+        Shooting(shotsFired);
+        //gunfire = laserShot[i];
+
+        if (thalmicMyo.pose != _lastPose)
+        {
+            _lastPose = thalmicMyo.pose;
+            shotsFired = false;
+            if (thalmicMyo.pose == Pose.Fist)
+            {
+                Debug.Log("Fist" + i);
+                shotsFired = true;
+                thalmicMyo.Vibrate(VibrationType.Medium);
+                nextTimeFired = Time.time + rateOfFire;
+                i = 0;
+                Instantiate(laserShot, laserShotSpawn.position, laserShotSpawn.rotation);
+                ExtendUnlockAndNotifyUserAction(thalmicMyo);
+            }
+            else if (thalmicMyo.pose == Pose.FingersSpread)
+            {
+                Debug.Log("Fingers" + i);
+                shotsFired = true;
+                thalmicMyo.Vibrate(VibrationType.Medium);
+                nextTimeFired = Time.time + rateOfFire;
+                i = 1;
+                Instantiate(laserShot1, laserShotSpawn.position, laserShotSpawn.rotation);
+                ExtendUnlockAndNotifyUserAction(thalmicMyo);
+            }
+        }
         
 
         if (updateReference)
@@ -100,7 +147,6 @@ public class PlayerController : MonoBehaviour
         {
             myo.Unlock(UnlockType.Timed);
         }
-
         myo.NotifyUserAction();
     }
 }﻿
