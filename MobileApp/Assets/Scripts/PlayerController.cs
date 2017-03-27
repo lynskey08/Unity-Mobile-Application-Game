@@ -31,8 +31,18 @@ public class PlayerController : MonoBehaviour
     public ThalmicMyo thalmicMyo;
     public GameObject myo = null;
     private Pose _lastPose = Pose.Unknown;
+    private bool shooting = false;
     private int i;
+    private bool shotsFired = false;
 
+    void Shooting(bool shotsFired)
+    {
+        if((shotsFired) && Time.time > nextTimeFired)
+        {
+            nextTimeFired = Time.time + rateOfFire;
+            Instantiate(laserShot);
+        }
+    }
 
     void Start() 
 	{
@@ -49,9 +59,7 @@ public class PlayerController : MonoBehaviour
 
         if (updateReference)
         {
-
-
-            Vector3 movement = new Vector3(myo.transform.forward.x * 10, 0.0f, 0.0f); //myo.transform.forward.z * 5
+            Vector3 movement = new Vector3(myo.transform.forward.x * 10, 0.0f, 0.0f);
             rb.velocity = movement * speed;
 
             rb.position = new Vector3
@@ -62,9 +70,7 @@ public class PlayerController : MonoBehaviour
             rb.rotation = Quaternion.Euler(0.0f, 0.0f, rb.velocity.x * -tiltShip);
 
         }
-        //rb.position = new Vector3((myo.transform.eulerAngles.x*10), 0.0f , 0.0f);// myo.transform.forward.z
-
-        rb.position = new Vector3((myo.transform.forward.x * 10), 0.0f, 0.0f);// myo.transform.forward.z
+        rb.position = new Vector3((myo.transform.forward.x * 10), 0.0f, 0.0f);
     }
 	
 	void FixedUpdate () 
