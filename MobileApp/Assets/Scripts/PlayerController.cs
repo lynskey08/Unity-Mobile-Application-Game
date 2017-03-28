@@ -5,6 +5,7 @@ using LockingPolicy = Thalmic.Myo.LockingPolicy;
 using Pose = Thalmic.Myo.Pose;
 using UnlockType = Thalmic.Myo.UnlockType;
 using VibrationType = Thalmic.Myo.VibrationType;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Boundary
@@ -34,6 +35,8 @@ public class PlayerController : MonoBehaviour
     private Pose _lastPose = Pose.Unknown;
     private bool shooting = false;
     private bool shotsFired = false;
+    public Button pause;
+    public Button resume;
     //public GameObject gunfire;
     private int i;
 
@@ -83,7 +86,7 @@ public class PlayerController : MonoBehaviour
             shotsFired = false;
             if (thalmicMyo.pose == Pose.Fist)
             {
-                Debug.Log("Fist" + i);
+                //Debug.Log("Fist" + i);
                 shotsFired = true;
                 thalmicMyo.Vibrate(VibrationType.Medium);
                 nextTimeFired = Time.time + rateOfFire;
@@ -93,12 +96,22 @@ public class PlayerController : MonoBehaviour
             }
             else if (thalmicMyo.pose == Pose.FingersSpread)
             {
-                Debug.Log("Fingers" + i);
+                //Debug.Log("Fingers" + i);
                 shotsFired = true;
                 thalmicMyo.Vibrate(VibrationType.Medium);
                 nextTimeFired = Time.time + rateOfFire;
                 i = 1;
                 Instantiate(laserShot1, laserShotSpawn.position, laserShotSpawn.rotation);
+                ExtendUnlockAndNotifyUserAction(thalmicMyo);
+            }
+            else if (thalmicMyo.pose == Pose.WaveOut)
+            {
+                resume.onClick.Invoke();
+                ExtendUnlockAndNotifyUserAction(thalmicMyo);
+            }
+            else if (thalmicMyo.pose == Pose.WaveIn)
+            {
+                pause.onClick.Invoke();
                 ExtendUnlockAndNotifyUserAction(thalmicMyo);
             }
         }

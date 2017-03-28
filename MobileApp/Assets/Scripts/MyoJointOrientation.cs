@@ -48,15 +48,18 @@ public class MyoJointOrientation : MonoBehaviour
 
 			if (thalmicMyo.pose == Pose.FingersSpread){
 				updateReference = true;
-				ExtendUnlockAndNotifyUserAction(thalmicMyo);
+                Debug.Log("fingers");
+                ExtendUnlockAndNotifyUserAction(thalmicMyo);
 			}
             else if (thalmicMyo.pose == Pose.Fist)
             {
                 thalmicMyo.Vibrate(VibrationType.Medium);
                 updateReference = true;
+                Debug.Log("fist");
                 ExtendUnlockAndNotifyUserAction(thalmicMyo);
             }
-		}
+           
+        }
 		if (Input.GetKeyDown ("r")) {
 			updateReference = true;
 		}
