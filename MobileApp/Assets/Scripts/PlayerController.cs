@@ -16,7 +16,7 @@ public class Boundary
 
 public class PlayerController : MonoBehaviour 
 {
-	public Rigidbody rb;//Rigidbody of the ship
+	private Rigidbody rb;//Rigidbody of the ship
 	public float speed;//the speed of the ship
 	public float tiltShip;//how much the player ship tilts
 	public Boundary boundary;//boundary for the player
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     public GameObject laserShot1;//ship laser game object
     public Transform laserShotSpawn;//ship laser spawn location
 	public float rateOfFire;//rate at which each laser firse
-
+    public GameController gc;
 	private float nextTimeFired;
 
     //private Quaternion _antiYaw = Quaternion.identity;
@@ -140,7 +140,8 @@ public class PlayerController : MonoBehaviour
             rb.rotation = Quaternion.Euler(0.0f, 0.0f, rb.velocity.x * -tiltShip);
 
         }
-        rb.position = new Vector3((myo.transform.forward.x * 10), 0.0f, 0.0f);
+            rb.position = new Vector3(myo.transform.forward.x * 10, 0.0f, 0.0f);
+        
     }
 	/*
 	void FixedUpdate () 

@@ -15,14 +15,14 @@ public class GameController : MonoBehaviour {
 	private int score;
 	public GUIText restartText;
 	public GUIText gameOverText;
-	private bool gameOver;
+	public bool gameOver;
 	private bool restart;
 	public string playerName = "";
 	public InputField Field;
 	public Button Enter;
 	public Button Return;
-	private string secretKey = "Gareth";
-	public string addScoreURL = "http://lynskey.cloudapp.net/addscore.php?";
+	//private string secretKey = "Gareth";
+	//public string addScoreURL = "http:lynskey.cloudapp.net/addscore.php?";
 
 	void Start(){
 		
@@ -36,23 +36,23 @@ public class GameController : MonoBehaviour {
 		UpdateScore ();
 		StartCoroutine (Spawn ());
 
-		Field.gameObject.SetActive (false);
-		Enter.gameObject.SetActive (false);
+		//Field.gameObject.SetActive (false);
+		//Enter.gameObject.SetActive (false);
 		Return.gameObject.SetActive (false);
 	}
 
 	void Update ()
 	{
-		if (restart)
-		{
+		//if (restart)
+		//{
 			
 			//if restart is true and the 'R' key is pressed, the scene is reloaded 
-			if (Input.GetKeyDown (KeyCode.KeypadEnter))
-			{
+			//if (Input.GetKeyDown (KeyCode.KeypadEnter))
+			//{
 				//Application.LoadLevel (Application.loadedLevel);
-				SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-			}
-		}
+				//SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+			//}
+		//}
 	}
 		
 	IEnumerator Spawn(){
@@ -77,6 +77,7 @@ public class GameController : MonoBehaviour {
 				break;
 			}
 		}
+        asteroidCount++;
 	}
 
 	//add scores when the asteroids/enemies are destroyed
@@ -96,29 +97,30 @@ public class GameController : MonoBehaviour {
 	public void GameOver(){
 		gameOverText.text = "Game Over!";//Game over text appears
 		gameOver = true;//gameOver is called
-		Field.gameObject.SetActive (true);
-		Enter.gameObject.SetActive (true);
-		Return.gameObject.SetActive (true);
+		//Field.gameObject.SetActive (true);
+		//Enter.gameObject.SetActive (true);
+		//Return.gameObject.SetActive (true);
 	}
 
-	public void submitScore(){
+	//public void submitScore(){
 		//starts coroutine of the PostScores method which takes in the playerName and score values
-		StartCoroutine (PostScores(playerName, score));
-		Field.gameObject.SetActive (false);
-		Enter.gameObject.SetActive (false);
-		Return.gameObject.SetActive (true);
-	}
+		//StartCoroutine (PostScores(playerName, score));
+		//Field.gameObject.SetActive (false);
+		//Enter.gameObject.SetActive (false);
+		//Return.gameObject.SetActive (true);
+	//}
 
-	public void enterBtn(){
+	//public void enterBtn(){
 		//submits playerName and score
-		playerName = Field.text;
-		submitScore ();
-	}
+		//playerName = Field.text;
+		//submitScore ();
+	//}
 
 	public void ReturnBtn(){
         SceneManager.LoadScene("Main");
 	}
 
+    /*
 	public string Md5Sum(string strToEncrypt){
 
 		System.Text.UTF8Encoding ue = new System.Text.UTF8Encoding ();
@@ -153,5 +155,5 @@ public class GameController : MonoBehaviour {
 
 			print ("There was an error posting the highscore: " +hs_post.error);
 		}
-	}
+	}*/
 }
