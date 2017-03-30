@@ -116,7 +116,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void ReturnBtn(){
-		Application.LoadLevel ("MainMenu");//returns to mainmenu
+        SceneManager.LoadScene("Main");
 	}
 
 	public string Md5Sum(string strToEncrypt){

@@ -5,7 +5,7 @@ using System.Collections;
 
 public class SettingsPage : MonoBehaviour {
 
-	private float slider = 1.0f;
+	//private float slider = 1.0f;
 	private float volume = 1.0f;
 	public Slider volumeSlider;
 	private string highscoresURL = "http://lynskey.cloudapp.net/display.php";

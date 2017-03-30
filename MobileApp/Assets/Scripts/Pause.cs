@@ -1,11 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
-using LockingPolicy = Thalmic.Myo.LockingPolicy;
-using Pose = Thalmic.Myo.Pose;
-using UnlockType = Thalmic.Myo.UnlockType;
-using VibrationType = Thalmic.Myo.VibrationType;
 
 public class Pause : MonoBehaviour {
 
@@ -29,5 +24,4 @@ public class Pause : MonoBehaviour {
         pauseButton.SetActive(true);
         Time.timeScale = 1;
     }
-
 }

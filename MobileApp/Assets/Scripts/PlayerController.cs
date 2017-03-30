@@ -6,6 +6,7 @@ using Pose = Thalmic.Myo.Pose;
 using UnlockType = Thalmic.Myo.UnlockType;
 using VibrationType = Thalmic.Myo.VibrationType;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class Boundary
@@ -27,16 +28,18 @@ public class PlayerController : MonoBehaviour
 
 	private float nextTimeFired;
 
-    private Quaternion _antiYaw = Quaternion.identity;
-    private float _referenceRoll = 0.0f;
+    //private Quaternion _antiYaw = Quaternion.identity;
+    //private float _referenceRoll = 0.0f;
     
     public ThalmicMyo thalmicMyo;
     public GameObject myo = null;
     private Pose _lastPose = Pose.Unknown;
-    private bool shooting = false;
+    //private bool shooting = false;
     private bool shotsFired = false;
     public Button pause;
     public Button resume;
+    public Button restart;
+    //public Button quit;
     //public GameObject gunfire;
     private int i;
 
@@ -114,6 +117,13 @@ public class PlayerController : MonoBehaviour
                 pause.onClick.Invoke();
                 ExtendUnlockAndNotifyUserAction(thalmicMyo);
             }
+            //else if (thalmicMyo.pose == Pose.DoubleTap)
+            //{
+            //    Debug.Log("DOUBLE TAP");
+            //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //    quit.onClick.Invoke();
+            //    ExtendUnlockAndNotifyUserAction(thalmicMyo);
+            //}
         }
         
 
@@ -132,7 +142,7 @@ public class PlayerController : MonoBehaviour
         }
         rb.position = new Vector3((myo.transform.forward.x * 10), 0.0f, 0.0f);
     }
-	
+	/*
 	void FixedUpdate () 
 	{
 		//moves the player 
@@ -150,7 +160,7 @@ public class PlayerController : MonoBehaviour
 			Mathf.Clamp (rb.position.z, boundary.zMinimum, boundary.zMaximum)
         );
 		rb.rotation = Quaternion.Euler (0.0f, 0.0f, rb.velocity.x * -tiltShip);//tilts the player ship
-	}
+	}*/
 
     void ExtendUnlockAndNotifyUserAction(ThalmicMyo myo)
     {
