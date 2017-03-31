@@ -7,18 +7,46 @@ public class EnemyWeaponController : MonoBehaviour {
 	public Transform laserSpawn;
 	public float rateOfFire;
 	public float delay;
-
-	private AudioSource audioSource;
+    private AudioSource audioSource;
+    
+    public GameController gc;
+    public GameObject g;
 
 	void Start ()
-	{
-		audioSource = GetComponent<AudioSource> ();
-		InvokeRepeating ("Fire", delay, rateOfFire);
-	}
+    {
+        gc = FindObjectOfType<GameController>();
 
-	void Fire ()
+        //Debug.Log(gc.newScoreValue);
+        if (gc.newScoreValue < 200)
+        {
+            audioSource = GetComponent<AudioSource>();
+            InvokeRepeating("", delay, rateOfFire);
+        }
+        if (gc.newScoreValue > 400)
+        {
+            audioSource = GetComponent<AudioSource>();
+            InvokeRepeating("Fire", delay, rateOfFire);
+        }
+        if (gc.newScoreValue > 600)
+        {
+            audioSource = GetComponent<AudioSource>();
+            InvokeRepeating("Fire", 0.00f, 500);
+        }
+
+    }
+
+    void Update()
+    {
+        if (gc.newScoreValue > 800)
+        {
+            audioSource = GetComponent<AudioSource>();
+            InvokeRepeating("Fire", 0.00f, 500);
+        }
+    }
+
+    void Fire ()
 	{
 		Instantiate (laser, laserSpawn.position, laserSpawn.rotation);
-		audioSource.Play ();
-	}
+        GetComponent<AudioSource>().Play();
+    }
 }

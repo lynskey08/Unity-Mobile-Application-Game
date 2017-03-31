@@ -12,33 +12,34 @@ public class GameController : MonoBehaviour {
 	public float startDelay;
 	public float wait;//wait for the waves of asteroids
 	public GUIText scoreText;
-	private int score;
-	public GUIText restartText;
+	public int newScoreValue = 0;//public because we need to access it in EnemyWeaponController
+	//public GUIText restartText;
 	public GUIText gameOverText;
 	public bool gameOver;
-	private bool restart;
+	//private bool restart;
 	public string playerName = "";
 	public InputField Field;
 	public Button Enter;
 	public Button Return;
+    //public EnemyWeaponController ew;
 	//private string secretKey = "Gareth";
 	//public string addScoreURL = "http:lynskey.cloudapp.net/addscore.php?";
 
 	void Start(){
 		
 		gameOver = false;
-		restart = false;
+		//restart = false;
 		//these two GUIText labels will display nothing at the start of the game
 		gameOverText.text = "";
-		restartText.text = "";
+		//restartText.text = "";
 
-		score = 0;
+		//score = 0;
 		UpdateScore ();
 		StartCoroutine (Spawn ());
 
 		//Field.gameObject.SetActive (false);
 		//Enter.gameObject.SetActive (false);
-		Return.gameObject.SetActive (false);
+		//Return.gameObject.SetActive (false);
 	}
 
 	void Update ()
@@ -71,27 +72,28 @@ public class GameController : MonoBehaviour {
 			yield return new WaitForSeconds(wait);
 
 			//this breaks the infinite while loop if the player is destroyed
-			if (gameOver) {
-				restartText.text = "Press 'Enter' to restart";
-				restart = true;
-				break;
-			}
+			//if (gameOver) {
+			//	//restartText.text = "Press 'Enter' to restart";
+			//	restart = true;
+			//	break;
+			//}
 		}
-        asteroidCount++;
+        //asteroidCount++;
 	}
 
 	//add scores when the asteroids/enemies are destroyed
 	public void AddScore(int newScoreValue){
-		score += newScoreValue;
+		this.newScoreValue += newScoreValue;
 		UpdateScore ();
 	}
 
 
-	void UpdateScore(){
+	public void UpdateScore(){
 		//displays the score in top left-hand side of the screen
 		//made it like the old arcade style game scores with six  
 		//zero's and it just adds onto that
-		scoreText.text = "Score: " + score.ToString().PadLeft(6,'0');
+		scoreText.text = "Score: " + newScoreValue.ToString().PadLeft(6,'0');
+        //ew.score = score;
 	}
 
 	public void GameOver(){
@@ -116,9 +118,9 @@ public class GameController : MonoBehaviour {
 		//submitScore ();
 	//}
 
-	public void ReturnBtn(){
-        SceneManager.LoadScene("Main");
-	}
+	//public void ReturnBtn(){
+    //    SceneManager.LoadScene("Main");
+	//}
 
     /*
 	public string Md5Sum(string strToEncrypt){
