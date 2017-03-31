@@ -22,22 +22,24 @@ public class EnemyWeaponController : MonoBehaviour {
             audioSource = GetComponent<AudioSource>();
             InvokeRepeating("", delay, rateOfFire);
         }
+        if (gc.newScoreValue > 200)
+        {
+            audioSource = GetComponent<AudioSource>();
+            InvokeRepeating("Fire", 0.25f, 500);
+        }
         if (gc.newScoreValue > 400)
         {
             audioSource = GetComponent<AudioSource>();
-            InvokeRepeating("Fire", delay, rateOfFire);
-        }
-        if (gc.newScoreValue > 600)
-        {
-            audioSource = GetComponent<AudioSource>();
-            InvokeRepeating("Fire", 0.00f, 500);
+            InvokeRepeating("Fire", 0.00f, 1000);
         }
 
     }
 
     void Update()
     {
-        if (gc.newScoreValue > 800)
+        gc = FindObjectOfType<GameController>();
+
+        if (gc.newScoreValue > 600)
         {
             audioSource = GetComponent<AudioSource>();
             InvokeRepeating("Fire", 0.00f, 500);
