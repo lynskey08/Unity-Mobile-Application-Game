@@ -20,11 +20,11 @@ We want to experiment with a variety or gestures in the game and incorporate the
 - Myo Gesture Control Armband. 
   
 You must have the Myo Connect installed which can be found here https://developer.thalmic.com/downloads. 
-Download and extract the project to your desktop.  
-Open unity and at the project menu, open the extracted project located on your desktop. 
-Put the Myo Armband on and make sure it is synced while playing the game as the gestures may not be recognized.   
-Have a look as the gestures we created to become familiar with the game. 
-Click the play button in Unity.
+Download and extract the project to your desktop.<BR>
+Open unity and at the project menu, open the extracted project located on your desktop.<BR>
+Put the Myo Armband on and make sure it is synced while playing the game as the gestures may not be recognized.<BR>
+Have a look as the gestures we created to become familiar with the game.<BR> 
+Click the play button in Unity.<BR>
 
 
 # Unity Space Shooter Game (Before converting to myo)
