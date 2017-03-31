@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BackgroundScrolling">
+    <Position X="5.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAASAAAAAAAAEAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\BackgroundScrolling.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DestroyAfterTime">
+    <Position X="12.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Assets\Scripts\DestroyAfterTime.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DestroyByBoundary">
+    <Position X="12.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\DestroyByBoundary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DestroyByContact">
+    <Position X="3.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAACAEQAAAAAAAAAAAABAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\DestroyByContact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ElusiveEnemyMovement">
+    <Position X="10.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAEAAEAAiAAAAJEAAAAEABAAAAAABAgAAAAAAAAAIA=</HashCode>
+      <FileName>Assets\Scripts\ElusiveEnemyMovement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyWeaponController">
+    <Position X="6" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAACEAACAAAAAAAAAACAgAAAAEEAAIAAAABAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\EnemyWeaponController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameController">
+    <Position X="10.5" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAgSAAACAAARAAAAEAEAAgAAAEAAEFAAAAEQEAgIA=</HashCode>
+      <FileName>Assets\Scripts\GameController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mover">
+    <Position X="8.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Mover.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pause">
+    <Position X="8.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAACAIAAAAAAAAAAAEAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Pause.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boundary">
+    <Position X="4" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAUAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerController">
+    <Position X="14.75" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CAQEABlABKAAAAgEABAACAAAAAAACYQAIBAAAAAAIAA=</HashCode>
+      <FileName>Assets\Scripts\PlayerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rotator">
+    <Position X="7" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Rotator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityEngine.MonoBehaviour" Collapsed="true">
+    <Position X="8" Y="4.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="3.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
