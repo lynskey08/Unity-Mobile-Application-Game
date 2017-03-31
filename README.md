@@ -2,6 +2,7 @@
 - Gareth Lynskey - G00312651
 - Patrick Griffin - G00314635
 - Module: Gesture Based UI
+- Lecturer: Damien Costello
 
 ## Project Overview:
 The purpose of this project is to create a single player Space Shooter survival game. The game is an existing project we had done in Unity in third year. We are going to use the Myo Gesture Control Armband to control the movement and functionality of the spaceship/game. 
@@ -14,7 +15,7 @@ We want to experiment with a variety or gestures in the game and incorporate the
 -	Visual studio instead of mono for debugging.
  
 ## How to download and run the application: 
-**To operate this game, you must have the following:  
+**To operate this game, you must have the following:** 
 - Unity 5.5.1 or a newer version. The game is not backwards compatible. 
 - Myo Gesture Control Armband. 
   
