@@ -1,23 +1,29 @@
-# Myo Armband added into unity game
+# Myo Gesture Unity Space Shooter Game
 - Gareth Lynskey - G00312651
 - Patrick Griffin - G00314635
 - Module: Gesture Based UI
 
 ## Project Overview:
-We are converting a project created last year on Unity to incorporate the use of gestures in the game. Here is the link to last years Project which we wish to convert https://github.com/lynskey08/Unity-Mobile-Application-Game .
-The Game itself is a space shooter survival game. 
-Hardware and Technologies 
+The purpose of this project is to create a single player Space Shooter survival game. The game is an existing project we had done in Unity in third year. We are going to use the Myo Gesture Control Armband to control the movement and functionality of the spaceship/game. 
+We want to experiment with a variety or gestures in the game and incorporate the gestures that have the most relevance to the game. We also hope to incorporate a target goal for the game such as a final boss or levels. 
+
+## Hardware and Technologies 
 -	Myo armband 
 -	Unity
 -	GitHub 
 -	Visual studio instead of mono for debugging.
-
-## Purpose of the application
-The purpose of the application is to allow the user to control a spaceship with the Myo Armband while avoiding/shooting rocks and enemies and to demonstrate the use of gestures using the Myo Armband. 
-Gestures identified as appropriate for this application
-Gestures that we are working on and hope to complete. We thought that these gestures made most sense in our opinion for the game. We wanted to use as many gestures as possible with significance to the game.
-
-
+ 
+## How to download and run the application: 
+**To operate this game, you must have the following:  
+- Unity 5.5.1 or a newer version. The game is not backwards compatible. 
+- Myo Gesture Control Armband. 
+  
+You must have the Myo Connect installed which can be found here https://developer.thalmic.com/downloads. 
+Download and extract the project to your desktop.  
+Open unity and at the project menu, open the extracted project located on your desktop. 
+Put the Myo Armband on and make sure it is synced while playing the game as the gestures may not be recognized.   
+Have a look as the gestures we created to become familiar with the game. 
+Click the play button in Unity.
 
 
 # Unity Space Shooter Game (Before converting to myo)
